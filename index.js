@@ -25,7 +25,7 @@ let path = d3
 
 const color = d3
     .scaleQuantize()
-    .range(["#edf8e9", "#bae4b3", "#74c476", "#31a354", "#006d2c"])
+    .range(['#fee5d9','#fcae91','#fb6a4a','#de2d26','#a50f15'])
 
 d3.csv("covid.csv").then((data) => {
     let cleanData = data.filter((d) => d.sexe == 0)
@@ -63,11 +63,11 @@ d3.csv("covid.csv").then((data) => {
             d3.select('#day').html("Jour: " + day)
         }
         const slider = document.getElementById('slider')
-        slider.addEventListener('change', (e) => {
+        slider.addEventListener('input', (e) => {
             console.log(`Loading day ${e.target.value}`)
-            d3.select("#slider").on("input", () => drawMap(e.target.value))
+            drawMap(e.target.value)
         })
-        drawMap(0)
+        drawMap(slider.value)
     })
 })
 

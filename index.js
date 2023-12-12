@@ -56,6 +56,9 @@ d3.csv("covid.csv").then((data) => {
                         .attr('style', 'left:' + (mousePosition[0] + 15) + 'px; top:' + (mousePosition[1] - 35) + 'px;')
                         .html(d.properties.nom + ' ' + d.properties.values[day])
                 })
+                .on('mouseout', () => {
+                    tooltip.classed('hidden', true)
+                })
             date = new Date(dates[day]).toLocaleDateString(undefined, {
                 weekday: 'long',
                 year: 'numeric',
